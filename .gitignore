@@ -1,4 +1,5 @@
 .env
 .venv
 .idea
-.image
+image.jpg
+memory.json
