@@ -9,13 +9,11 @@
 7. point interpreter type - to python address for path settings
 
 **Official  docs- https://microsoft.github.io/autogen/stable//user-guide/agentchat-user-guide/installation.html**
+**tools download- https://microsoft.github.io/autogen/stable//user-guide/extensions-user-guide/index.html**
 1. Pycharm terminal > pip install -U "autogen-agentchat"
 2. download model -by pip command > pip install "autogen-ext[openai]" ( brain of autoGen)
-
-tools download- https://microsoft.github.io/autogen/stable//user-guide/extensions-user-guide/index.html
-3.  pip install -U "autogen-ext[mcp]"
-
-to check all 3 downloaded> go to proj settings> interpreter> look for autogen-agentChat, mcp, openai
+3. pip install -U "autogen-ext[mcp]"
+4. to check all 3 downloaded> go to proj settings> interpreter> look for autogen-agentChat, mcp, openai
 
 -------------------------first program----------------------
 
@@ -25,7 +23,5 @@ to check all 3 downloaded> go to proj settings> interpreter> look for autogen-ag
 
 **------------------------make workflows-------------------------------**
 1. single agent--> task assigned or asked to a single agent
-
 2. multiagent --> agent 1-->talk to agent 2 and back and forth until termination condition met
-
 3. human machin: or human in loop: agent1--> human ---> agent1
