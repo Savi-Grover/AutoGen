@@ -29,7 +29,7 @@ async def main1():
     Agent2= AssistantAgent(name="Agent2_Student", model_client=openai_model_client,
                            system_message="You are a student, ask questions")
 
-    # method for agent group chat
+    # method for agent group chat- list decides order of communication
     team= RoundRobinGroupChat(participants=[Agent1,Agent2],
                               termination_condition=MaxMessageTermination(max_messages=6))
 

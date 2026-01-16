@@ -1,7 +1,7 @@
 import asyncio
 import os
 
-from autogen_agentchat.conditions import MaxMessageTermination
+from autogen_agentchat.conditions import MaxMessageTermination, TextMentionTermination
 from autogen_agentchat.teams import RoundRobinGroupChat, SelectorGroupChat
 from autogen_ext.models.openai import OpenAIChatCompletionClient
 from autogen_agentchat.agents import AssistantAgent
@@ -34,11 +34,16 @@ async def main1():
                             system_message="You are a Critic, review your writer's article"
                                            "say 'TERMINATE' when satisfactory reviews")
 
+    # choice of termination condition
+    text_termination = TextMentionTermination('TERMINATE')
+    max_message_termination = MaxMessageTermination(max_messages=6)
+    termination = text_termination | max_message_termination
+
     # method for agent group chat- group chat will use its intelligence to decide order of agents
     team= SelectorGroupChat(participants=[Agent3,Agent2,Agent1],
                             model_client=openai_model_client,
                             allow_repeated_speaker=True,  #may have ag1 ag2 talking back to back
-                            termination_condition=MaxMessageTermination(max_messages=6))
+                            termination_condition=termination)  # whatever comes first; that term cond will apply
 
     # to start chat
     team.run_stream(task="Research on renewable energy trends")
